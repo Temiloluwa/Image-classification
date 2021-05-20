@@ -1,11 +1,8 @@
 import os
 import torch
 from PIL import Image
-from torchvision import transforms, datasets
+from torchvision import transforms
 
-
-DEFAULT_DATA_PATH = os.path.join(os.path.dirname(__file__), "data")
-MAX_BATCHSIZE = 2
 
 transformations = transforms.Compose([
     transforms.Resize((256, 256)),
@@ -21,7 +18,7 @@ def preprocess_image(path: str):
         im = transformations(im)
     return im
 
-def preprocess_data(path: str = DEFAULT_DATA_PATH):
+def preprocess_data(path: str):
     """ Batch files in data folder """
     data_tensors = []
     file_names = []
