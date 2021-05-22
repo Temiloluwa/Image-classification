@@ -29,6 +29,14 @@ jobs:
           file: model/dockerfile
           push: true
           tags: temmie01/image-classifier:latest
+
+      - name: Deploy container
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: docker kill $(docker ps -q) && docker build -t temmie01/image-classifier:latest . && docker run -p 8080:8080  temmie01/image-classifier:latest
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          privateKey: ${{ secrets.SSH_PK }}
       
 
         
