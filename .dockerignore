@@ -1,0 +1,5 @@
+__pycache__/
+.vscode/
+run_pytorch.py
+pytorch_data.py
+readme.md

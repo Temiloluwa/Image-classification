@@ -32,3 +32,17 @@ def preprocess_data(path: str):
 
     data_tensors = torch.stack(data_tensors)
     return data_tensors, file_names
+
+
+def run_inference(model, data, top_predictions):
+    input_data, _ = data
+    predictions = model(input_data)
+    probabilities = torch.softmax(predictions, 1)
+    pred_indices = torch.argsort(probabilities, 1,\
+                        descending=True)[:, : top_predictions]
+    probabilities = torch.gather(probabilities, 1, pred_indices)
+    probabilities = (probabilities * 100).detach().numpy()
+    pred_indices = pred_indices.detach().numpy()
+ 
+    return probabilities, pred_indices
+
