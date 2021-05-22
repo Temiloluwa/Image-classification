@@ -7,7 +7,7 @@ on:
 
 jobs:
   # build, test
-  build and test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:    
       - name: Setup buildx

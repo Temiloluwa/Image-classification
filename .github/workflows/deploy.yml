@@ -7,7 +7,7 @@ on:
 
 jobs:
   # build, test, deploy
-  build and push image:
+  build-and-push-image:
     runs-on: ubuntu-latest
     steps:    
       - name: Setup buildx
