@@ -1,0 +1,17 @@
+name: dev workflow
+
+on:
+  push:
+    branches:
+      - temi-dev
+
+jobs:
+  # build, test
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Setup buildx
+        uses: docker/setup-buildx-action@v1
+
+      
+      
