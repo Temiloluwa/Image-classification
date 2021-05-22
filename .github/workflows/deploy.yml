@@ -22,10 +22,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./model
-          file: ./model/dockerfile
+          context: model
+          file: model/dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/image-classifier:latest
+          tags: temmie01/image-classifier:latest
       
 
         
