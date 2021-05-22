@@ -1,5 +1,6 @@
 __pycache__/
 .vscode/
+deployed_app/__pycache__/
 run_pytorch.py
 pytorch_data.py
 readme.md

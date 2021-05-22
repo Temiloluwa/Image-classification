@@ -8,7 +8,7 @@ from utils import read_imagenet_classnames, display_results
 from torchvision import models
 
 parser = argparse.ArgumentParser(description='Inference Trained Model')
-parser.add_argument('data', metavar='DIR', help='default data path')
+parser.add_argument('--data', metavar='DIR', default='./model/data', help='default data path')
 parser.add_argument('-bs', '--batch-size', metavar='BS', default=2, help='maximum batchsize')
 parser.add_argument('-tp', '--top-predictions', metavar='NUMPRED',\
                      default=5, help='number of top predictions per sample')
