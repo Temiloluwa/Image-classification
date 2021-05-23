@@ -14,12 +14,13 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Deploy-container
-          uses: fifsky/ssh-action@master
-          with:
-            command: ls -lah
-            host: ${{ secrets.SSH_HOST }}
-            user: ${{ secrets.SSH_USERNAME }}
-            key: ${{ secrets.SSH_PK }}
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            ls -lah
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PK }}
 
       
       
