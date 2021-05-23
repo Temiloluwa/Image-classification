@@ -15,6 +15,7 @@ jobs:
         with:
           command: |
             ls -lah
+            echo "key added"
           host: ${{ secrets.SSH_HOST }}
           user: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PK }}
