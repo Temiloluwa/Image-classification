@@ -1,6 +1,7 @@
 import os
 import numpy as np
 from PIL import Image
+from typing import Union
 from utils import softmax
 
 def transformations(im):
@@ -12,13 +13,15 @@ def transformations(im):
         reshape(1, 1, -1)
     im = (im - mean)/ std
     im = im.transpose(2, 0, 1)
+    im = np.expand_dims(im, 0)
     return im
 
 
-def preprocess_image(path: str):
+def preprocess_image(im):
     """ Preprocess image """
-    with Image.open(path) as im:
-        im = transformations(im).astype("float32")
+    if type(im) is str:
+        im =  Image.open(im)
+    im = transformations(im).astype("float32")
     return im
 
 
@@ -34,15 +37,13 @@ def preprocess_data(path: str):
         data_tensors.append(preprocess_image(file_path))
         file_names.append(file_name)
 
-    data_tensors = np.stack(data_tensors)
-    print(data_tensors.shape)
+    data_tensors = np.vstack(data_tensors)
     return data_tensors, file_names
 
 
-def run_inference(model, data, top_predictions):
-    input_data, _ = data
+def run_inference(model, im, top_predictions):
     input_name = model.get_inputs()[0].name
-    predictions = model.run(None, {input_name: input_data})[0]
+    predictions = model.run(None, {input_name: im})[0]
     probabilities = softmax(predictions)
     pred_indices = np.flip(np.argsort\
                     (probabilities, axis=1)[:, -top_predictions:], 1)

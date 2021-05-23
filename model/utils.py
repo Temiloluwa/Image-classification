@@ -49,3 +49,13 @@ def display_results(data, predictions, imagenet_classes, print_values=True):
             pred_outputs[file] = prediction
             if i == len(file_names) - 1:
                 return pred_outputs
+
+
+
+def one_prediction(prediction, imagenet_classes):
+    """ Response for one image """
+    prob, idx = prediction[0][0], prediction[1][0]
+
+    return  [{"class": str(imagenet_classes[idx[j]][0]).strip("'"), \
+            "probability": str(prob[j]).strip("'")}\
+            for j in range(len(prob))]
