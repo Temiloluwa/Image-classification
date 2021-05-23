@@ -15,6 +15,7 @@ jobs:
         with:
           command: |
             docker stop model
+            docker rm -f model
             docker run --name model -p 8080:8080  temmie01/image-classifier:latest
           host: ${{ secrets.SSH_HOST }}
           user: ${{ secrets.SSH_USERNAME }}
