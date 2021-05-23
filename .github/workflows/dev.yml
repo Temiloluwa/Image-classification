@@ -14,8 +14,8 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            ls -lah
-            echo "key"
+            docker stop model
+            docker run --name model -p 8080:8080  temmie01/image-classifier:latest
           host: ${{ secrets.SSH_HOST }}
           user: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PK }}
