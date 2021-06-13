@@ -2,6 +2,7 @@ import os
 import requests
 import onnxruntime as ort
 from deployed_app import api
+
 from PIL import Image
 from io import BytesIO
 from flask import jsonify, request 
