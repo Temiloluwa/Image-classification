@@ -1,4 +1,3 @@
 .vscode/
 __pycache__/
 model/__pycache__/
-model/deployed_app/__pycache__/
