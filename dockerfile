@@ -3,7 +3,7 @@ FROM python:3.8-buster
 ENV top_predictions 5
 
 WORKDIR /app
-COPY deployed_app/app.ini .
+COPY app/app.ini .
 
 COPY . .
 
