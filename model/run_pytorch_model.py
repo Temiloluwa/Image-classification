@@ -12,7 +12,7 @@ parser.add_argument('--data', metavar='DIR', default='./model/data', help='defau
 parser.add_argument('-bs', '--batch-size', metavar='BS', default=2, help='maximum batchsize')
 parser.add_argument('-tp', '--top-predictions', metavar='NUMPRED',\
                      default=5, help='number of top predictions per sample')
-parser.add_argument('-exp', '--export', default=False,help='export model to onnx')
+parser.add_argument('-exp', '--export', action="store_true",help='export model to onnx')
 
 
 def export_to_onnx(model):

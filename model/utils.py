@@ -39,7 +39,7 @@ def display_results(data, predictions, imagenet_classes, print_values=True):
     pred_outputs = {}
     for i, file in enumerate(file_names):
         prob, idx = probabilities[i], pred_indices[i]
-        prediction = [f"{imagenet_classes[idx[j]][0]} with probability {prob[j]:0.2f}%" \
+        prediction = [f"{imagenet_classes[idx[j]][0]} with probability {prob[j]:.2f}%" \
                         for j in range(len(prob))]
         prediction = "\n".join(prediction)
         

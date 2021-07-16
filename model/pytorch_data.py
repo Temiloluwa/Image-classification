@@ -1,6 +1,7 @@
 import os
 import torch
 from PIL import Image
+import torch.nn.functional as F
 from torchvision import transforms
 
 
@@ -37,12 +38,9 @@ def preprocess_data(path: str):
 def run_inference(model, data, top_predictions):
     input_data, _ = data
     predictions = model(input_data)
-    probabilities = torch.softmax(predictions, 1)
-    pred_indices = torch.argsort(probabilities, 1,\
-                        descending=True)[:, : top_predictions]
-    probabilities = torch.gather(probabilities, 1, pred_indices)
+    probabilities, pred_indices = F.softmax(predictions, 1).topk(top_predictions)
     probabilities = (probabilities * 100).detach().numpy()
     pred_indices = pred_indices.detach().numpy()
- 
+    
     return probabilities, pred_indices
 
