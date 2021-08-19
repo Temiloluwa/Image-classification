@@ -37,7 +37,7 @@ jobs:
             docker stop model
             docker rm -f model
             docker pull temmie01/image-classifier:${{github.sha}}
-            sudo docker run -d --name model -p 8080:80  temmie01/image-classifier:${{github.sha}}
+            sudo docker run -d --name model -p 80:8080  temmie01/image-classifier:${{github.sha}}
           host: ${{ secrets.SSH_HOST }}
           user: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PK }}
